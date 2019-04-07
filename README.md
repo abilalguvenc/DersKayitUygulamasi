@@ -1,4 +1,4 @@
-# An Information Registration Application
+# Basit Bir Bilgi-Kayıt Uygulaması Geliştirilmesi
 
 **2018-2019 Bahar Yarıyılı <br>
 BLM3520 Mobil Programlamaya Giriş <br>
