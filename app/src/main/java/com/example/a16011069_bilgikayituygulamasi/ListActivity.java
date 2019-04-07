@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +18,9 @@ import java.util.ArrayList;
 public class ListActivity extends AppCompatActivity
 {
     TextView eName, eSurname, eId, eMail, eTel;
+    ImageView eImage;
     String name, surname, id, mail, tel;
+    Uri image;
 
     RecyclerView recyclerView;
 
@@ -38,18 +41,21 @@ public class ListActivity extends AppCompatActivity
         id = (String) i.getSerializableExtra ("id");
         mail = (String) i.getSerializableExtra ("mail");
         tel = (String) i.getSerializableExtra ("tel");
+        image = (Uri) i.getSerializableExtra ("img");
 
         eName = findViewById (R.id.tvName);
         eSurname = findViewById (R.id.tvSurname);
         eId = findViewById (R.id.tvId);
         eMail = findViewById (R.id.tvMail);
         eTel = findViewById (R.id.tvPhone);
+        eImage = findViewById (R.id.imageView);
 
         eName.setText(name);
         eSurname.setText(surname);
         eId.setText(id);
         eMail.setText(mail);
         eTel.setText(tel);
+        eImage.setImageURI(image);
 
         recyclerView = findViewById(R.id.recyclerView);
 
