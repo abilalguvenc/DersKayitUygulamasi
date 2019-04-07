@@ -1,12 +1,16 @@
 package com.example.a16011069_bilgikayituygulamasi;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -14,7 +18,6 @@ public class ListActivity extends AppCompatActivity
 {
     TextView eName, eSurname, eId, eMail, eTel;
     String name, surname, id, mail, tel;
-    ArrayList<Course> course;
 
     RecyclerView recyclerView;
 
@@ -48,16 +51,6 @@ public class ListActivity extends AppCompatActivity
         eMail.setText(mail);
         eTel.setText(tel);
 
-
-
-        course.add (new Course("Introduction to Mobile Programming", "54", "79", "95"));
-        course.add (new Course("Introduction to Game Development", "50", "90", "97"));
-        course.add (new Course("Artificial Intelligence", "45", "72", "58"));
-        course.add (new Course("Network Technologies", "145", "32", "42"));
-        course.add (new Course("Software Engineering", "60", "67", "77"));
-        course.add (new Course("Numerical Analysis", "86", "72", "56"));
-        course.add (new Course("Behaviour Sciences", "73", "42", "21"));
-
         recyclerView = findViewById(R.id.recyclerView);
 
         CourseAdapter courseAdapter = new CourseAdapter(this, Course.getData());
@@ -66,5 +59,27 @@ public class ListActivity extends AppCompatActivity
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
+    }
+
+    public void call (View view)
+    {
+        String uri = "tel:" + tel.trim();
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse(uri));
+        startActivity(intent);
+    }
+
+    public void mail (View view)
+    {
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL  , mail);
+        i.putExtra(Intent.EXTRA_SUBJECT, "Mail Test");
+        i.putExtra(Intent.EXTRA_TEXT   , "My app is sending this mail.");
+        try {
+            startActivity(Intent.createChooser(i, "Send this with..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

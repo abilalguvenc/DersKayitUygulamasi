@@ -19,10 +19,6 @@ public class MainActivity extends AppCompatActivity
 
         etId = findViewById(R.id.etUsername);
         etPw = findViewById(R.id.etPassword);
-
-
-        Intent intent = new Intent(this, FormActivity.class);
-        startActivity(intent);
     }
 
     public void signin (View view)
