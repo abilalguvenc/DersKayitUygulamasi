@@ -60,13 +60,11 @@ public class ListActivity extends AppCompatActivity
 
         recyclerView = findViewById(R.id.recyclerView);
 
-        ProductAdapter productAdapter = new ProductAdapter(this, Product.getData());
-        recyclerView.setAdapter(productAdapter);
+        CourseAdapter courseAdapter = new CourseAdapter(this, Course.getData());
+        recyclerView.setAdapter(courseAdapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
-
-
     }
 }

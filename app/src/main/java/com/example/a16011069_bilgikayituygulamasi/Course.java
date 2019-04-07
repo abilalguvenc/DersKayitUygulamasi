@@ -1,5 +1,7 @@
 package com.example.a16011069_bilgikayituygulamasi;
+import java.util.ArrayList;
 
+/*
 public class Course
 {
     public String cName, cPop, cAvg, cPnt;
@@ -12,67 +14,56 @@ public class Course
         cPnt = grade;
     }
 }
+*/
 
-/*
-import java.util.ArrayList;
+public class Course {
 
-public class Product {
+    String cName, cPop, cAvg, cGrade;
 
-    private String productName;
-    private String productDescription;
-    private int imageID;
+    public Course ()
+    {
 
-    public Product() {
     }
 
-    public Product(int imageID, String productName, String productDescription) {
-        this.imageID = imageID;
-        this.productName = productName;
-        this.productDescription = productDescription;
+    public Course (String name, String population, String averageGrade, String grade)
+    {
+        cName = name;
+        cPop = population;
+        cAvg = averageGrade;
+        cGrade = grade;
     }
 
+    public String getName () { return cName; }
+    public void setcName (String name) { this.cName = name; }
 
-    public int getImageID() {
-        return imageID;
-    }
+    public String getPopulation () { return cPop; }
+    public void setPopulation (String pop) { this.cPop = pop; }
 
-    public void setImageID(int imageID) {
-        this.imageID = imageID;
-    }
+    public String getGradeAverage () { return cAvg; }
+    public void setGradeAverage (String avg) { this.cAvg = avg; }
 
-    public String getProductName() {
-        return productName;
-    }
+    public String getGrade () { return cGrade; }
+    public void setGrade (String grade) { this.cGrade = grade; }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
+    public static ArrayList<Course> getData()
+    {
+        ArrayList<Course> courseList = new ArrayList<Course>();
+        String[] cNames = {"Introduction to Mobile Programming", "Introduction to Game Development", "Artificial Intelligence", "Network Technologies", "Software Engineering", "Numerical Analysis", "Behaviour Sciences"};
+        String[] cPops = {"54", "50", "45", "145", "60", "86", "73"};
+        String[] cAvg = {"79", "90", "72", "32", "67", "72", "42"};
+        String[] cGrade = {"95", "97", "58", "42", "77", "56", "21"};
 
-    public String getProductDescription() {
-        return productDescription;
-    }
+        for (int i = 0; i < cNames.length; i++)
+        {
+            Course temp = new Course();
+            temp.setcName (cNames[i]);
+            temp.setPopulation (cPops[i]);
+            temp.setGradeAverage (cAvg[i]);
+            temp.setGrade (cGrade[i]);
 
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
-
-    public static ArrayList<Product> getData() {
-        ArrayList<Product> productList = new ArrayList<Product>();
-        String[] productNames = {"Geleceği Yazanlar", "Paycell", "Tv+","Dergilik","Bip","GNC","Hesabım","Sim","LifeBox","Merhaba Umut","Yaani","Hayal Ortağım","Goller Cepte","Piri"};
-
-        for (int i = 0; i < productNames.length; i++) {
-            Product temp = new Product();
-            temp.setProductName(productNames[i]);
-            temp.setProductDescription("Turkcell");
-
-            productList.add(temp);
-
+            courseList.add(temp);
         }
 
-
-        return productList;
-
-
+        return courseList;
     }
 }
- */
