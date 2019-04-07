@@ -54,4 +54,9 @@ public class FormActivity extends AppCompatActivity
 
         startActivity(intent);
     }
+
+    public void addPhoto (View view)
+    {
+        
+    }
 }
